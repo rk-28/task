@@ -8,10 +8,12 @@ jobs:
         run: |
          echo "Hello World!"
          pwd
+      - name: Check out repository code
+        uses: actions/checkout@v2
       - name: setup python
         uses: actions/setup-python@v4
         with:
           python-version: '3.9' # install the python version needed
 
       - name: execute py script # run main.pyadkjawnd
-        run: python main.py
+        run: python3 main.py
