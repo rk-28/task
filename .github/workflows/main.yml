@@ -16,4 +16,4 @@ jobs:
           python-version: '3.9' # install the python version needed
 
       - name: execute py script # run main.py
-        run: python3 main.py
+        run: python main.py
