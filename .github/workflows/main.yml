@@ -13,5 +13,5 @@ jobs:
         with:
           python-version: '3.9' # install the python version needed
 
-      - name: execute py script # run main.py
+      - name: execute py script # run main.pyadkjawnd
         run: python /main.py
