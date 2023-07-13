@@ -7,16 +7,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+    - uses: actions/checkout@v2
+    - name: Run script file
+      run: |
+        #!/bin/bash
+        echo "Enter Your Name: "
+        read my_var
+        echo "Welcome ${my_var}!"
+      shell: bash
       
-      - name: Set up environment variables
-        run: echo "USER_INPUT=sdfigjhdfsgiuhsdfgiufhdgkuh" >> $GITHUB_ENV
+    - name: Set up environment variables
+      run: echo "USER_INPUT=${my_var}" >> $GITHUB_ENV
 
-      - name: setup python
-        uses: actions/setup-python@v4
-        with:
+    - name: setup python
+      uses: actions/setup-python@v4
+      with:
           python-version: '3.10' # install the python version needed
 
-      - name: execute py script # run main.py
-        run: python my_script.py
+    - name: execute py script # run main.py
+      run: python my_script.py
