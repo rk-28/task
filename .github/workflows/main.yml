@@ -13,4 +13,5 @@ jobs:
       - name: Run Python script
         run: |
             pwd
+            echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
             python my_script.py ${{ env.USER_INPUT }}
