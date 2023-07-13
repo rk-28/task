@@ -1,18 +1,14 @@
-name: Math Operation
+name: My Workflow
 
-on:
-  push:
-    branches:
-      - main
+on: [push]
 
 jobs:
-  calculate:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Perform math operation
-        run: |
-          X=$1
-          Y=$2
-          result=$((X + Y))
-          echo "The result is $result"
+      - name: Set up environment variables
+        run: echo "USER_INPUT=example" >> $GITHUB_ENV
+
+      - name: Run Python script
+        run: python my_script.py ${{ env.USER_INPUT }}
