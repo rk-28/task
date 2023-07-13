@@ -10,11 +10,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
       - name: Perform math operation
-        run: |
-          echo "INPUT_X=${{ env.X }}" >> $GITHUB_ENV
-          echo "INPUT_Y=${{ env.Y }}" >> $GITHUB_ENV
-          python math_operation.py
+        run: python math_operation.py ${{ env.X }} ${{ env.Y }}
         env:
           X: ${{ github.event.inputs.x }}
           Y: ${{ github.event.inputs.y }}
