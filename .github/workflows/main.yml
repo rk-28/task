@@ -1,14 +1,9 @@
 name: Math Operation
 
 on:
-  workflow_dispatch:
-    inputs:
-      x:
-        description: 'Value of X'
-        required: true
-      y:
-        description: 'Value of Y'
-        required: true
+  push:
+    branches:
+      - main
 
 jobs:
   calculate:
@@ -17,7 +12,7 @@ jobs:
     steps:
       - name: Perform math operation
         run: |
-          X=${{ github.event.inputs.x }}
-          Y=${{ github.event.inputs.y }}
+          X=$1
+          Y=$2
           result=$((X + Y))
           echo "The result is $result"
