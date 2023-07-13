@@ -1,8 +1,20 @@
-name: hello-world
-on: [push, pull_request]
+name: Math Operation
+
+on: [push]
+
 jobs:
-  my-job:
+  calculate:
     runs-on: ubuntu-latest
+
     steps:
-      - name: my-step
-        run: echo "Hello World!"
+      - name: Set up environment
+        run: |
+          echo "X=${{ env.INPUT_X }}" >> $GITHUB_ENV
+          echo "Y=${{ env.INPUT_Y }}" >> $GITHUB_ENV
+
+      - name: Perform math operation
+        run: |
+          X=$X
+          Y=$Y
+          result=$((X + Y))
+          echo "The result is $result"
