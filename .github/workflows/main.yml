@@ -1,20 +1,23 @@
 name: Math Operation
 
-on: [push]
+on:
+  workflow_dispatch:
+    inputs:
+      x:
+        description: 'Value of X'
+        required: true
+      y:
+        description: 'Value of Y'
+        required: true
 
 jobs:
   calculate:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Set up environment
-        run: |
-          echo "X=${{ env.INPUT_X }}" >> $GITHUB_ENV
-          echo "Y=${{ env.INPUT_Y }}" >> $GITHUB_ENV
-
       - name: Perform math operation
         run: |
-          X=$X
-          Y=$Y
+          X=${{ github.event.inputs.x }}
+          Y=${{ github.event.inputs.y }}
           result=$((X + Y))
           echo "The result is $result"
